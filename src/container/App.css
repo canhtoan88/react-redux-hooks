@@ -1,0 +1,27 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+ul li {
+  margin: 10px;
+  padding: 10px;
+}
+ul li a {
+  text-decoration: none;
+}
+ul li a:hover {
+  color: yellow;
+}
+li {
+  display: inline;
+}
+button {
+  padding: 5px 8px;
+  border: 1px solid blue;
+  margin-right: 10px;
+}
+.active {
+  font-weight: bold;
+  color: #3F3F3F;
+}

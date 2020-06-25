@@ -1,0 +1,5 @@
+export const type = {
+	INC_COUNTER: 'INC_COUNTER',
+	DES_COUNTER: 'DES_COUNTER',
+	ADD_COUNTER: 'ADD_COUNTER'
+}
