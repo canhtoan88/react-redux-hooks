@@ -8,6 +8,7 @@ import Theme from './component/Theme';
 
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
 import reducer from './store/redux_reducer';
 
@@ -22,7 +23,7 @@ const middleware = store => {
 	}
 }
 
-const store = createStore(reducer, applyMiddleware(middleware));
+const store = createStore(reducer, applyMiddleware(middleware, thunk));
 
 ReactDOM.render(
 	<React.StrictMode>
