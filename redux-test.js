@@ -1,5 +1,32 @@
 const { createStore } = require('redux');
 
+// Type
+const type = {
+    INC_COUNTER: 'INC_COUNTER',
+    DES_COUNTER: 'DES_COUNTER',
+    ADD_COUNTER: 'ADD_COUNTER'
+}
+
+// Action
+const action = {
+    increase: () => {
+        return {
+            type: type.INC_COUNTER
+        }
+    },
+    decrease: () => {
+        return {
+            type: type.DES_COUNTER
+        }
+    },
+    add: (value) => {
+        return {
+            type: type.ADD_COUNTER,
+            value: value
+        }
+    }
+};
+
 // Reducer
 const initialState = {
     counter: 0
@@ -39,7 +66,7 @@ store.subscribe(() => {
 });
 
 // Dispatch
-store.dispatch({type: 'INC_COUNTER'});
-store.dispatch({type: 'DES_COUNTER'});
-store.dispatch({type: 'ADD_COUNTER', value: 5});
+store.dispatch(action.increase());
+store.dispatch(action.decrease());
+store.dispatch(action.add(5));
 console.log(store.getState());

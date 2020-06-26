@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+
+import * as counterAction from '../store/redux/counter_action.js';
+import * as resultAction from '../store/redux/result_action.js';
 
 class Counter extends Component {
 
@@ -15,7 +19,7 @@ class Counter extends Component {
 				stored: 0
 			})
 		}
-		this.props.increaseCounter();
+		this.props.counterAction.increase();
 	}
 	descreaseCounter = () => {
 		if (this.state.stored) {
@@ -23,7 +27,7 @@ class Counter extends Component {
 				stored: 0
 			})
 		}
-		this.props.descreaseCounter();
+		this.props.counterAction.decrease();
 	}
 	plusTenCounter = () => {
 		if (this.state.stored) {
@@ -31,7 +35,7 @@ class Counter extends Component {
 				stored: 0
 			})
 		}
-		this.props.plusTenCounter();
+		this.props.counterAction.add(10);
 	}
 	storeResult = (value) => {
 		if (!this.state.stored) {
@@ -39,20 +43,20 @@ class Counter extends Component {
 				stored: 1
 			})
 		}
-		this.props.storeResult(value);
+		this.props.resultAction.addItem(value);
 	}
 	deleteItem = (index) => {
-		this.props.deleteItem(index);
+		this.props.resultAction.delItem(index);
 	}
 
 	render() {
 		return (
 			<center>
-				{this.props.counter} <br/>
+				<p className={'counter'}>{this.props.counter}</p>
 				<button onClick={() => this.increaseCounter()}>Increase</button>
 				<button onClick={() => this.descreaseCounter()}>Descrease</button>
 				<button onClick={() => this.plusTenCounter()}>Plus 10</button>
-				<button onClick={() => this.storeResult(this.props.counter)} disabled={this.state.stored ? 'disabled' : false}>Store Result</button>
+				<button onClick={() => this.storeResult(this.props.counter)} disabled={this.state.stored ? true : false}>Store Result</button>
 				<hr/>
 				<ul>
 					{this.props.result.map((value, index) => (
@@ -69,11 +73,13 @@ const mapStateToProps = state => ({
 	result: state.result.result
 })
 const mapDispatchToProps = dispatch => ({
-	increaseCounter: () => dispatch({type: 'INC_COUNTER'}),
-	descreaseCounter: () => dispatch({type: 'DES_COUNTER'}),
-	plusTenCounter: () => dispatch({type: 'ADD_COUNTER', value: 10}),
-	storeResult: (value) => dispatch({type: 'ADD_ITEM', value: value}),
-	deleteItem: (index) => dispatch({type: 'DEL_ITEM', index: index})
+	// increaseCounter: () => dispatch(counterAction.increase()),
+	// descreaseCounter: () => dispatch(counterAction.decrease()),
+	// plusTenCounter: () => dispatch(counterAction.add(10)),
+	counterAction: bindActionCreators(counterAction, dispatch),
+	//storeResult: (value) => dispatch(resultAction.addItem(value)),
+	//deleteItem: (index) => dispatch(resultAction.delItem(index))
+	resultAction: bindActionCreators(resultAction, dispatch)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);

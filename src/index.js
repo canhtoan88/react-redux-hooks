@@ -6,11 +6,23 @@ import * as serviceWorker from './serviceWorker';
 
 import Theme from './component/Theme';
 
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
 import reducer from './store/redux_reducer';
-const store = createStore(reducer);
+
+const middleware = store => {
+	return next => {
+		return action => {
+			console.log('[Middleware] Dispatching - ', action);
+			const result = next(action);
+			console.log('[Middleware] next state - ', store.getState());
+			return result;
+		}
+	}
+}
+
+const store = createStore(reducer, applyMiddleware(middleware));
 
 ReactDOM.render(
 	<React.StrictMode>
