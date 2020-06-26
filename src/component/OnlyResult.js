@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import * as totalAction from '../store/redux/total_action.js';
+
 class OnlyResult extends Component {
 	state = {
 		show: false
 	}
 
 	sumResult = () => {
-		this.props.sumResult(this.props.result);
+		this.props.totalAction(this.props.result);
 		this.setState({
 			show: true
 		})
@@ -32,7 +34,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	sumResult: (result) => dispatch({type: 'TOTAL_RESULT', data: result})
+	totalAction: result => dispatch(totalAction.sumResult(result))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(OnlyResult);
