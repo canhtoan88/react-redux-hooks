@@ -21,7 +21,20 @@ button {
   border: 1px solid blue;
   margin-right: 10px;
 }
+button:focus {
+  border: 1px solid red;
+  background-color: green;
+}
 .active {
   font-weight: bold;
   color: #3F3F3F;
+}
+
+p.counter {
+  padding: 4px 30px;
+  display: table;
+  font-size: 16px;
+  color: red;
+  background-color: #f0f0f0;
+  border: 1px dotted gray;
 }
