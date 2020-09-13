@@ -6,17 +6,18 @@ import Home from '../component/Home';
 import Counter from '../component/Counter';
 import Result from '../component/OnlyResult';
 
-const Routes = () => {
-	return (
-		<Router>
-			<Route path={'/'} component={App} />
-			<Switch>
-				<Route exact path={'/'} component={Home}/>
-				<Route path={'/counter'} component={Counter} />
-				<Route path={'/result'} component={Result} />
-			</Switch>
-		</Router>
-	);
-}
+import User from '../component/User';
+
+const Routes = () => (
+	<Router>
+		<Route path={'/'} component={App} />
+		<Switch>
+			<Route exact path={'/'} component={Home}/>
+			<Route path={'/counter'} component={Counter} />
+			<Route path={'/result'} component={Result} />
+			<Route path={'/user'} component={User}/>
+		</Switch>
+	</Router>
+)
 
 export default Routes;

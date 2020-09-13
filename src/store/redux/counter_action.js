@@ -1,7 +1,11 @@
 export const type = {
-	INC_COUNTER: 'INC_COUNTER',
-	DES_COUNTER: 'DES_COUNTER',
-	ADD_COUNTER: 'ADD_COUNTER'
+	INC_COUNTER: 		 'INC_COUNTER',
+	DES_COUNTER: 		 'DES_COUNTER',
+	ADD_COUNTER: 		 'ADD_COUNTER',
+	SUB_COUNTER: 		 'SUB_COUNTER',
+	SUB_COUNTER_SUCCESS: 'SUB_COUNTER_SUCCESS',
+	MUL_COUNTER: 		 'MUL_COUNTER',
+	MUL_COUNTER_SUCCESS: 'MUL_COUNTER_SUCCESS'
 }
 
 export const increase = () => {
@@ -16,9 +20,23 @@ export const decrease = () => {
 	}
 };
 
-export const add = (value) => {
+export const add = value => {
 	return {
 		type: type.ADD_COUNTER,
 		value: value
 	}
 };
+
+export const subtract = value => {
+	return {
+		type: type.SUB_COUNTER,
+		value: value
+	}
+}
+
+export const multiply = value => {
+	return {
+		type: type.MUL_COUNTER,
+		value: value
+	}
+}

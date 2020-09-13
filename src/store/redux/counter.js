@@ -23,6 +23,18 @@ const CounterReducer = (state = initialState, action = {}) => {
 				counter: state.counter + action.value
 			}
 		}
+		case type.SUB_COUNTER_SUCCESS: {
+			return {
+				...state,
+				counter: state.counter - action.value
+			}
+		}
+		case type.MUL_COUNTER_SUCCESS: {
+			return {
+				...state,
+				counter: state.counter * action.value
+			}
+		}
 		default: {
 			return state;
 		}

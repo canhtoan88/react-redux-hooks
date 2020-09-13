@@ -37,6 +37,22 @@ class Counter extends Component {
 		}
 		this.props.counterAction.add(10);
 	}
+	subtractFiveCounter = () => {
+		if (this.state.stored) {
+			this.setState({
+				stored: 0
+			})
+		}
+		this.props.counterAction.subtract(5);
+	}
+	multiplyTwoCounter = () => {
+		if (this.state.stored) {
+			this.setState({
+				stored: 0
+			})
+		}
+		this.props.counterAction.multiply(2);
+	}
 	storeResult = (value) => {
 		if (!this.state.stored) {
 			this.setState({
@@ -56,6 +72,8 @@ class Counter extends Component {
 				<button onClick={() => this.increaseCounter()}>Increase</button>
 				<button onClick={() => this.descreaseCounter()}>Descrease</button>
 				<button onClick={() => this.plusTenCounter()}>Plus 10</button>
+				<button onClick={() => this.subtractFiveCounter()}>Subtract 5</button>
+				<button onClick={() => this.multiplyTwoCounter()}>Multiply 2</button>
 				<button onClick={() => this.storeResult(this.props.counter)} disabled={this.state.stored ? true : false}>Store Result</button>
 				<hr/>
 				<ul>
